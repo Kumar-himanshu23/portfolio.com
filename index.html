@@ -45,7 +45,8 @@
         header img {
             position: absolute;
             top: 30px;
-            left: 650px;
+            left: 50%;
+            transform: translateX(-50%);
             width: 100px;
             height: 100px;
             border-radius: 50%;
@@ -54,6 +55,7 @@
 
         nav {
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
             gap: 15px;
             margin-top: 20px;
@@ -113,6 +115,9 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            width: 100%; /* Full width on smaller screens */
+            max-width: 200px; /* Limit width on larger screens */
+            margin: 10px 0; /* Space above and below buttons */
         }
 
         button:hover {
@@ -131,15 +136,66 @@
             background-color: #007bff;
             color: white;
         }
+
+        /* Media Queries for Responsive Design */
+        @media (max-width: 768px) {
+            header img {
+                width: 80px;
+                height: 80px;
+            }
+
+            nav {
+                flex-direction: column; /* Stack nav items */
+                gap: 10px;
+            }
+
+            nav a {
+                font-size: 14px;
+            }
+
+            section {
+                padding: 15px;
+            }
+
+            table, th, td {
+                font-size: 14px; /* Smaller font for tables */
+            }
+
+            button {
+                padding: 8px; /* Smaller button padding */
+                font-size: 14px; /* Button text smaller */
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 24px;
+            }
+
+            header p {
+                font-size: 16px;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            section h2 {
+                font-size: 20px;
+            }
+
+            ul li {
+                font-size: 14px; /* Smaller font for skills list */
+            }
+        }
     </style>
 </head>
 <body>
 
     <header>
        
-        <img src="image.jpg" alt="Profile Image">
         <h1>HIMANSHU KUMAR</h1>
-        <p>Learner|| Programmer</p>
+        <p>Learner || Programmer</p>
         <nav>
             <a href="#about">About</a>
             <a href="#skills">Skills</a>
@@ -149,26 +205,23 @@
     </header>
 
     <div class="container">
-      
         <section id="about">
             <h2>About Me</h2>
-            <p>Hello! I’m Himanshu, a passionate  developer building  websites and user interfaces. I’m skilled in  front-end including HTML, CSS, JavaScript and in future more.</p>
+            <p>Hello! I’m Himanshu, a passionate developer building websites and user interfaces. I’m skilled in front-end technologies including HTML, CSS, JavaScript, and I'm learning more in the future.</p>
         </section>
 
-     
         <section id="skills">
             <h2>Skills</h2>
             <ul>
                 <li><a href="https://www.javatpoint.com/html-tutorial" target="_blank">HTML</a></li>
-                <li><a href="https://www.javatpoint.com/css-tutorial" target="_blank" >CSS</a> </li>
-                <li> <a href="https://www.javatpoint.com/javascript-tutorial" target="_blank" >JavaScript</a></li>
-                <li><a href="https://www.javatpoint.com/dbms-tutorial" target="_blank" >DBMS (SQL)</a></li>
-                <li><a href="https://www.javatpoint.com/cpp-tutorial" target="_blank" >c++</a></li>
-                <li><a href="https://www.javatpoint.com/c-programming-language-tutorial" target="_blank" >c</a></li>
+                <li><a href="https://www.javatpoint.com/css-tutorial" target="_blank">CSS</a></li>
+                <li><a href="https://www.javatpoint.com/javascript-tutorial" target="_blank">JavaScript</a></li>
+                <li><a href="https://www.javatpoint.com/dbms-tutorial" target="_blank">DBMS (SQL)</a></li>
+                <li><a href="https://www.javatpoint.com/cpp-tutorial" target="_blank">C++</a></li>
+                <li><a href="https://www.javatpoint.com/c-programming-language-tutorial" target="_blank">C</a></li>
             </ul>
         </section>
 
-        <!-- Projects Section -->
         <section id="projects">
             <h2>Projects</h2>
             <table>
@@ -183,37 +236,33 @@
                 <tbody>
                     <tr>
                         <td>Ball-Game</td>
-                        <td><h4>This is a simple game project for fun.</h4></td>
-                        <td>HTML, CSS ,JavaScript</td>
-                        <td><a href="https://kumar-himanshu23.github.io/game.com/" target="_blank"><button class="view">view project</button></a></td>
+                        <td>This is a simple game project for fun.</td>
+                        <td>HTML, CSS, JavaScript</td>
+                        <td><a href="https://kumar-himanshu23.github.io/game.com/" target="_blank"><button class="view">View Project</button></a></td>
                     </tr>
                     <tr>
-                        <td>Image uploder</td>
-                        <td><h4>A simple web-site in which upload image's.</h4></td>
-                        <td>HTML, CSS and JavaScript</td>
-                        <td><a href="https://kumar-himanshu23.github.io/atm.com/" target="_blank"><button class="view">view project</button></a></td>
+                        <td>Image Uploader</td>
+                        <td>A simple website for uploading images.</td>
+                        <td>HTML, CSS, JavaScript</td>
+                        <td><a href="https://kumar-himanshu23.github.io/atm.com/" target="_blank"><button class="view">View Project</button></a></td>
                     </tr>
                     <tr>
                         <td>Simple ATM</td>
-                        <td><h4>just for fun to Deposit and Withdraw money.</h4></td>
-                        <td>HTML, CSS and JavaScript</td>
-                        <td><a href="https://kumar-himanshu23.github.io/hatm/" target="_blank"><button class="view">view project</button></a></td>
+                        <td>Just for fun to Deposit and Withdraw money.</td>
+                        <td>HTML, CSS, JavaScript</td>
+                        <td><a href="https://kumar-himanshu23.github.io/hatm/" target="_blank"><button class="view">View Project</button></a></td>
                     </tr>
                 </tbody>
             </table>
             <button onclick="toggleDetails()">View More Details</button>
             <div class="project-details">
-                <p>
-                    <h4>still learning for more projects.</h4>
-                </p>
-                 </div>
+                <p>Still learning for more projects.</p>
+            </div>
         </section>
 
-        <!-- Contact Section -->
         <section id="contact">
             <h2>Contact</h2>
             <p>Feel free to reach out to me via email at <strong>kh419368@gmail.com</strong></p>
-          
         </section>  
     </div>
 
