@@ -21,12 +21,12 @@
 
         .choice {
             display: flex;
-            justify-content: center;
+            justify-content: space-evenly; /* Distribute items evenly across the screen */
             margin: 20px auto;
-            width: 100%;
-            flex-wrap: no-wrap;
-            gap: 10px; /* Adds space between the choices */
             padding: 0 10px;
+            gap: 10px; /* Space between items */
+            flex-wrap: wrap; /* Ensure items wrap on smaller screens */
+            max-width: 100%;
         }
 
         .choice div {
@@ -39,7 +39,7 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             text-align: center;
             min-width: 90px;
-            max-width: 130px;
+            max-width: 120px;
         }
 
         .choice div:hover {
@@ -57,10 +57,8 @@
 
         .score {
             display: flex;
-            justify-content: center;
+            justify-content: space-evenly;
             margin: 20px auto;
-            width: 100%;
-            padding: 0 10px;
             gap: 20px;
         }
 
@@ -106,23 +104,24 @@
             background-color: #45a049;
         }
 
+        /* Responsive adjustments */
         @media (max-width: 768px) {
             .choice {
-                flex-direction: row; /* Ensure horizontal layout on mobile */
-                justify-content: space-evenly; /* Evenly space out the choices */
-                gap: 5px; /* Smaller gap for mobile screens */
+                justify-content: space-between; /* Keep items spaced out in row */
+                gap: 10px; /* More space between items */
+                flex-wrap: wrap; /* Allow items to wrap */
+            }
+
+            .choice div {
+                width: 30%; /* Adjust the width of choices for smaller screens */
+                max-width: 100px; /* Set a max-width for smaller screens */
+                font-size: 1.2em; /* Slightly larger font size for readability */
             }
 
             .score {
                 flex-direction: column;
                 align-items: center;
-                gap: 10px; /* Adjust gap between user and comp sections */
-            }
-
-            .choice div {
-                width: 30%; /* Adjust width for smaller screens */
-                max-width: 100px; /* Restrict max width of choices */
-                font-size: 1.2em; /* Increase font size for better visibility */
+                gap: 15px; /* Space between the user and comp score on mobile */
             }
 
             .result {
@@ -134,6 +133,19 @@
                 top: 20px;
                 right: 20px;
                 padding: 12px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .choice div {
+                width: 45%; /* Adjust width further for very small screens */
+                max-width: 80px;
+                font-size: 1.1em; /* Slightly smaller text */
+            }
+
+            input, button {
+                width: 90%; /* Make the input and button take more space on smaller screens */
+                font-size: 1.1em;
             }
         }
     </style>
