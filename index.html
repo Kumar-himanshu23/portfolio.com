@@ -21,21 +21,25 @@
 
         .choice {
             display: flex;
-            justify-content: space-around;
+            justify-content: center;
             margin: 20px auto;
-            max-width: 600px;
-            flex-wrap: wrap;
+            width: 100%;
+            flex-wrap: no-wrap;
+            gap: 10px; /* Adds space between the choices */
+            padding: 0 10px;
         }
 
         .choice div {
             flex: 1;
-            margin: 5px;
-            padding: 20px;
+            padding: 15px;
             background: #fff;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             cursor: pointer;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            min-width: 90px;
+            max-width: 130px;
         }
 
         .choice div:hover {
@@ -53,9 +57,11 @@
 
         .score {
             display: flex;
-            justify-content: space-around;
+            justify-content: center;
             margin: 20px auto;
-            max-width: 600px;
+            width: 100%;
+            padding: 0 10px;
+            gap: 20px;
         }
 
         .score div {
@@ -78,19 +84,56 @@
             cursor: pointer;
         }
 
+        input, button {
+            padding: 10px;
+            font-size: 1em;
+            margin: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            width: 80%;
+            max-width: 300px;
+            cursor: pointer;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
         @media (max-width: 768px) {
             .choice {
-                flex-direction: column;
-                align-items: center;
+                flex-direction: row; /* Ensure horizontal layout on mobile */
+                justify-content: space-evenly; /* Evenly space out the choices */
+                gap: 5px; /* Smaller gap for mobile screens */
             }
 
             .score {
                 flex-direction: column;
+                align-items: center;
+                gap: 10px; /* Adjust gap between user and comp sections */
             }
 
             .choice div {
-                width: 80%; /* Make the choices bigger on smaller screens */
-                margin: 10px 0;
+                width: 30%; /* Adjust width for smaller screens */
+                max-width: 100px; /* Restrict max width of choices */
+                font-size: 1.2em; /* Increase font size for better visibility */
+            }
+
+            .result {
+                font-size: 1.2em;
+                margin: 10px;
+            }
+
+            .settings {
+                top: 20px;
+                right: 20px;
+                padding: 12px;
             }
         }
     </style>
@@ -102,8 +145,8 @@
 
     <div class="front">
         <h2 id="welcome">Welcome, Player! Enter your name:</h2>
-        <input type="text" id="playerName" placeholder="Enter your name" style="padding: 5px; margin: 10px;">
-        <button onclick="startGame()" style="padding: 5px;">Start Game</button>
+        <input type="text" id="playerName" placeholder="Enter your name">
+        <button onclick="startGame()">Start Game</button>
     </div>
 
     <div id="gameArea" style="display: none;">
@@ -118,7 +161,7 @@
             </div>
             <div class="choice3" id="Scissor">
                 <h1>✂️</h1>
-                <h2>Scissor</h2>
+                <h2>Scissors</h2>
             </div>
         </div>
 
