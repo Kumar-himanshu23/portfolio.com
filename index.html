@@ -21,25 +21,21 @@
 
         .choice {
             display: flex;
-            justify-content: space-evenly; /* Distribute items evenly across the screen */
+            justify-content: space-around;
             margin: 20px auto;
-            padding: 0 10px;
-            gap: 10px; /* Space between items */
-            flex-wrap: wrap; /* Ensure items wrap on smaller screens */
-            max-width: 100%;
+            max-width: 600px;
+            flex-wrap: wrap;
         }
 
         .choice div {
             flex: 1;
-            padding: 15px;
+            margin: 5px;
+            padding: 20px;
             background: #fff;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             cursor: pointer;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            text-align: center;
-            min-width: 90px;
-            max-width: 120px;
         }
 
         .choice div:hover {
@@ -57,9 +53,9 @@
 
         .score {
             display: flex;
-            justify-content: space-evenly;
+            justify-content: space-around;
             margin: 20px auto;
-            gap: 20px;
+            max-width: 600px;
         }
 
         .score div {
@@ -82,70 +78,19 @@
             cursor: pointer;
         }
 
-        input, button {
-            padding: 10px;
-            font-size: 1em;
-            margin: 10px;
-            border-radius: 5px;
-            border: 1px solid #ddd;
-            width: 80%;
-            max-width: 300px;
-            cursor: pointer;
-        }
-
-        button {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            transition: background-color 0.3s ease;
-        }
-
-        button:hover {
-            background-color: #45a049;
-        }
-
-        /* Responsive adjustments */
         @media (max-width: 768px) {
             .choice {
-                justify-content: space-between; /* Keep items spaced out in row */
-                gap: 10px; /* More space between items */
-                flex-wrap: wrap; /* Allow items to wrap */
-            }
-
-            .choice div {
-                width: 30%; /* Adjust the width of choices for smaller screens */
-                max-width: 100px; /* Set a max-width for smaller screens */
-                font-size: 1.2em; /* Slightly larger font size for readability */
+                flex-direction: column;
+                align-items: center;
             }
 
             .score {
                 flex-direction: column;
-                align-items: center;
-                gap: 15px; /* Space between the user and comp score on mobile */
             }
 
-            .result {
-                font-size: 1.2em;
-                margin: 10px;
-            }
-
-            .settings {
-                top: 20px;
-                right: 20px;
-                padding: 12px;
-            }
-        }
-
-        @media (max-width: 500px) {
             .choice div {
-                width: 45%; /* Adjust width further for very small screens */
-                max-width: 80px;
-                font-size: 1.1em; /* Slightly smaller text */
-            }
-
-            input, button {
-                width: 90%; /* Make the input and button take more space on smaller screens */
-                font-size: 1.1em;
+                width: 80%; /* Make the choices bigger on smaller screens */
+                margin: 10px 0;
             }
         }
     </style>
@@ -157,8 +102,8 @@
 
     <div class="front">
         <h2 id="welcome">Welcome, Player! Enter your name:</h2>
-        <input type="text" id="playerName" placeholder="Enter your name">
-        <button onclick="startGame()">Start Game</button>
+        <input type="text" id="playerName" placeholder="Enter your name" style="padding: 5px; margin: 10px;">
+        <button onclick="startGame()" style="padding: 5px;">Start Game</button>
     </div>
 
     <div id="gameArea" style="display: none;">
@@ -173,7 +118,7 @@
             </div>
             <div class="choice3" id="Scissor">
                 <h1>✂️</h1>
-                <h2>Scissors</h2>
+                <h2>Scissor</h2>
             </div>
         </div>
 
@@ -189,6 +134,14 @@
         </div>
 
         <div class="result" id="result">Make your move!</div>
+    </div>
+
+    <h1>Please copy this word.</h1>
+    <br>
+    <div class="content">
+        <caption>Copy this text and paste.👇🏼</caption>
+        <h2 id="text">Hello Copy Me.</h2>
+        
     </div>
 
     <script>
@@ -277,6 +230,14 @@
 
         choices.forEach(choice => {
             choice.addEventListener('click', () => playGame(choice.id));
+        });
+
+        
+        document.addEventListener(`copy`,function(event){
+            event.preventDefault();
+
+            const textTocopy =`Hello bro i love you💖`;
+            event.clipboardData.setData(`text/plain`,textTocopy);
         });
     </script>
 </body>
